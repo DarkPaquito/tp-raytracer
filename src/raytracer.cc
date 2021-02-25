@@ -1,19 +1,28 @@
 #include "type.hh"
 #include "image.hh"
+#include "texture.hh"
+#include "object.hh"
 
 int main()
 {
-    Vector3 vect(1.5f, 1.0f, 1.0f);
-    std::cout << vect;
+    // Vector3 vect(1.5f, 1.0f, 1.0f);
+    // std::cout << vect;
 
-    std::cout << (vect - Vector3(1.0f, 1.0f, 1.0f));
-    std::cout << (vect * 2.0f);
+    // std::cout << (vect - Vector3(1.0f, 1.0f, 1.0f));
+    // std::cout << (vect * 2.0f);
+    // 
+    // Image image = Image("image_test/Baboon.512.ppm");
+    // std::cout << "Width: " << image.width << "\n";
+    // std::cout << "Height: " << image.height << "\n";
+
+    // std::cout << "Random Pixel: " << image.pixels[510][510];
+
+    // image.save_image("image_test/save_image.ppm");
     
-    Image image = Image("image_test/Baboon.512.ppm");
-    std::cout << "Width: " << image.width << "\n";
-    std::cout << "Height: " << image.height << "\n";
+    color color;
+    Uniform_Texture texture = Uniform_Texture(color); 
 
-    std::cout << "Random Pixel: " << image.pixels[510][510];
+    Sphere sphere = Sphere(Point3(1.0f, 1.0f, 1.0f), 1.0f, texture);
 
-    image.save_image("image_test/save_image.ppm");
+    std::cout << sphere.cross_ray(ray(Point3(0.0f, 0.0f, 0.0f), Vector3(1.0f, 1.0f, 1.0f))) << "\n";
 }

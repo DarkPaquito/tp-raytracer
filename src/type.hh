@@ -20,6 +20,9 @@ class Point3
         float z;
 
         Point3(float x, float y, float z) : x(x), y(y), z(z) { }
+
+        Point3 operator-(const Point3 &point) const;
+        float dot(const Point3 &point) const;
 };
 
 // Vector3 class contains euclidean representation of a 3D vector
@@ -36,6 +39,8 @@ class Vector3
         Vector3 operator*(const float &l) const;
         Vector3 operator+(const Vector3 &vect) const;
         Vector3 operator-(const Vector3 &vect) const;
+        float dot(const Point3 &point) const;
+        float dot(const Vector3 &vect) const;
 };
 
 std::ostream& operator<<(std::ostream &out, const color &color);
