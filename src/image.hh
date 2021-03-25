@@ -13,6 +13,7 @@ class Image
         unsigned width;
         std::vector<std::vector<struct color>> pixels;
 
+        Image(unsigned height, unsigned width);
         Image(std::string filename);
 
         void save_image(std::string filename);

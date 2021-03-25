@@ -1,5 +1,13 @@
 #include "image.hh"
 
+Image::Image(unsigned height, unsigned width)
+{
+    this->height = height;
+    this->width = width;
+
+    pixels.assign(height, std::vector<color>(width));
+}
+
 Image::Image(std::string filename)
 {
     std::ifstream file = std::ifstream(filename, std::ios::binary);
@@ -32,13 +40,15 @@ Image::Image(std::string filename)
     {
         for (size_t j = 0; j < width; ++j)
         {
-            color pix;
+            char r;
+            char g;
+            char b;
 
-            file.read(&pix.r, 1);
-            file.read(&pix.g, 1);
-            file.read(&pix.b, 1);
+            file.read(&r, 1);
+            file.read(&g, 1);
+            file.read(&b, 1);
 
-            pixels[i][j] = pix;
+            pixels[i][j] = color(r, g, b);
         }
     }
 
@@ -65,9 +75,13 @@ void Image::save_image(std::string filename)
     {
         for (size_t j = 0; j < width; ++j)
         {
-            file.write(&pixels[i][j].r, 1);
-            file.write(&pixels[i][j].g, 1);
-            file.write(&pixels[i][j].b, 1);
+            char r = pixels[i][j].r;
+            char g = pixels[i][j].g;
+            char b = pixels[i][j].b;
+
+            file.write(&r, 1);
+            file.write(&g, 1);
+            file.write(&b, 1);
         }
     }
 

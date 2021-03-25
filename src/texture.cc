@@ -1,6 +1,6 @@
 #include "texture.hh"
 
-texture Uniform_Texture::get_texture(Point3 point)
+texture Uniform_Texture::get_texture(Point3 point) const
 {
-    return _tex;
+    return tex_;
 }
